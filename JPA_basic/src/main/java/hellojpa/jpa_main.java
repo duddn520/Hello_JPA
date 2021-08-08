@@ -9,6 +9,7 @@ import java.util.List;
 public class jpa_main{
     public static void main(String[] args){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
+
         EntityManager em = emf.createEntityManager();
 
         //transcation 설정
@@ -17,13 +18,12 @@ public class jpa_main{
 
         //code
 
-        try {
-//         Member findMember = em.find(Member.class, 1L);
-           List<Member> result = em.createQuery("select m from Member as m",Member.class)
-                   .getResultList();
+        try{
+            Member findmember = em.find(Member.class, 1L);
+            List<Member> findmemberList = findmember.getTeam().getMemberList();
 
-            for (Member member : result) {
-                System.out.println("member.name = "+ member.getName());
+            for (Member member : findmemberList) {
+                System.out.println("member.name = "+ member.getUsername());
             }
             //tx 커밋
             tx.commit();
