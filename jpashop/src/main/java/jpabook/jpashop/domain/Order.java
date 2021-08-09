@@ -25,6 +25,10 @@ public class Order {
     @OneToMany (mappedBy = "order")
     private List<Orderitem> orderitems = new ArrayList<>();
 
+    @OneToOne
+    @JoinColumn(name = "DELIVERY_ID")
+    private Delivery delivery;
+
     //양방향 매핑 편의 메서드
     public void addOrderItem(Orderitem orderitem){
         orderitems.add(orderitem);

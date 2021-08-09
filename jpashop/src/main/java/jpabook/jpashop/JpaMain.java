@@ -21,10 +21,6 @@ public class JpaMain {
         //code
 
         try {
-            Order order = new Order();
-            em.persist(order);
-
-            order.addOrderItem(new Orderitem());
 
         } catch (Exception e){
             tx.rollback();
