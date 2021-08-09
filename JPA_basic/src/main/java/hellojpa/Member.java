@@ -23,6 +23,9 @@ public class Member {
 
     public void setTeam(Team team) {
         this.team = team;
+        //양방향 매핑의 편의를위한 메서드
+        team.getMemberList().add(this);
+
     }
 
     public Long getId() {

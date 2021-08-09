@@ -1,5 +1,8 @@
 package jpabook.jpashop;
 
+import jpabook.jpashop.domain.Order;
+import jpabook.jpashop.domain.Orderitem;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -18,6 +21,10 @@ public class JpaMain {
         //code
 
         try {
+            Order order = new Order();
+            em.persist(order);
+
+            order.addOrderItem(new Orderitem());
 
         } catch (Exception e){
             tx.rollback();
