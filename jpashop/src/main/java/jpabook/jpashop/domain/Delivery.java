@@ -11,9 +11,8 @@ public class Delivery extends BaseEntity{
     @OneToOne(mappedBy = "delivery",fetch = FetchType.LAZY)
     private Order order;
 
-    private String city;
-    private String street;
-    private String zipcode;
+    @Embedded
+    private Address address;
 
     @Enumerated(EnumType.STRING)
     private DeliveryStatus DeliveryStatus;
@@ -34,35 +33,19 @@ public class Delivery extends BaseEntity{
         this.order = order;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
-
     public jpabook.jpashop.domain.DeliveryStatus getDeliveryStatus() {
         return DeliveryStatus;
     }
 
     public void setDeliveryStatus(jpabook.jpashop.domain.DeliveryStatus deliveryStatus) {
         DeliveryStatus = deliveryStatus;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
